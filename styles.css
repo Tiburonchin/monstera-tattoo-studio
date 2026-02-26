@@ -1891,16 +1891,15 @@ header.scrolled .btn-nav {
 
 .footer-made-by {
   text-align: center;
-  font-size: 0.6rem;
-  letter-spacing: 1px;
-  color: transparent;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.18);
   user-select: none;
   pointer-events: none;
-  margin: 0;
-  padding: 0;
-  height: 0;
-  overflow: hidden;
-  line-height: 0;
+  margin: 0.6rem 0 0;
+  padding-bottom: 0.6rem;
+  font-family: monospace;
+  text-transform: uppercase;
 }
 
 .fade-reveal-delay {
