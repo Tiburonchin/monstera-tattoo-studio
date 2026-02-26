@@ -459,6 +459,7 @@ header.scrolled .btn-nav {
   position: relative;
   border-radius: 4px;
   overflow: hidden;
+  width: 100%;
 }
 
 .image-wrapper::after {
@@ -468,16 +469,34 @@ header.scrolled .btn-nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(197, 160, 89, 0.1); /* Subtle gold tint */
+  background: rgba(197, 160, 89, 0.1);
   pointer-events: none;
 }
 
 .image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
   transition: transform 1.5s ease;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .image-wrapper:hover img {
   transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+  .image-wrapper img {
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-wrapper img {
+    max-height: 320px;
+  }
 }
 
 .about-text h2 {
