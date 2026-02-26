@@ -23,6 +23,7 @@
 
 html {
   font-size: 16px;
+  overflow-x: hidden; /* Prevent AOS fade-right/left from causing horizontal scroll */
   /* scroll-behavior: smooth; -- REMOVED: Lenis handles this now */
 }
 
@@ -41,9 +42,10 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-white);
   color: var(--color-black);
-  line-height: 1.7; /* Slightly looser line-height for luxury feel */
+  line-height: 1.7;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased; /* Smoother text */
+  max-width: 100vw; /* Hard cap to viewport width */
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -61,6 +63,12 @@ a {
 
 ul {
   list-style: none;
+}
+
+/* Prevent AOS lateral animations (fade-right / fade-left) from
+   causing temporary horizontal scrollbar before they animate in */
+section {
+  overflow-x: hidden;
 }
 
 .container {

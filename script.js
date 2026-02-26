@@ -23,6 +23,14 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
+// On mobile, replace lateral AOS animations (fade-left/fade-right) with fade-up
+// to prevent temporary horizontal scroll before elements animate in
+if (window.innerWidth <= 768) {
+  document.querySelectorAll('[data-aos="fade-left"], [data-aos="fade-right"]').forEach(el => {
+    el.setAttribute('data-aos', 'fade-up');
+  });
+}
+
 // Initialize Animate On Scroll (AOS)
 AOS.init({
   once: true,
