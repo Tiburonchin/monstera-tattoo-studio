@@ -1893,13 +1893,12 @@ header.scrolled .btn-nav {
   text-align: center;
   font-size: 0.65rem;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.18);
-  user-select: none;
-  pointer-events: none;
+  color: rgba(255, 255, 255, 0.38);
   margin: 0.6rem 0 0;
   padding-bottom: 0.6rem;
   font-family: monospace;
   text-transform: uppercase;
+  cursor: text;
 }
 
 .fade-reveal-delay {
