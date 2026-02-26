@@ -345,7 +345,7 @@ header.scrolled .btn-nav {
 .hero {
   height: 100vh;
   width: 100%;
-  background-image: url("recursos/tatoo/tatto3.webp");
+  background-image: url("Recursos/tatoo/tatto3.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -557,7 +557,7 @@ header.scrolled .btn-nav {
   position: relative;
   padding: 10rem 0;
   background-color: var(--color-green-forest);
-  background-image: url("recursos/tatoo/tatto4.webp");
+  background-image: url("Recursos/tatoo/tatto4.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -689,7 +689,7 @@ header.scrolled .btn-nav {
   height: 500px;
   margin: 0 auto;
   background-color: #e8eee9;
-  background-image: url("recursos/tatoo/tatto2.jpg");
+  background-image: url("Recursos/tatoo/tatto2.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 50% 50% 40% 60% / 50% 40% 60% 50%;
