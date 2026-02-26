@@ -610,23 +610,82 @@ header.scrolled .btn-nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(26, 62, 38, 0.85);
+  background: linear-gradient(160deg, rgba(8, 24, 12, 0.92) 0%, rgba(26, 62, 38, 0.80) 100%);
 }
 
 .academy-content {
-  max-width: 700px;
+  max-width: 720px;
   margin: 0 auto;
+}
+
+/* Decorative frame box */
+.academy-frame {
+  position: relative;
+  padding: 3.5rem 3.5rem;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  text-align: center;
+}
+
+/* Corner ornaments */
+.academy-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--color-gold);
+  border-style: solid;
+}
+.academy-corner--tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.academy-corner--br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+.academy-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 1.2rem auto 2rem;
+  opacity: 0.7;
+}
+
+.academy-tags {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.academy-tags span {
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(197, 160, 89, 0.75);
+  font-weight: 500;
 }
 
 .academy-content h2 {
   color: var(--color-pure-white);
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.academy-content .subtitle {
+  display: block;
 }
 
 .academy-content p {
-  color: #e0e0e0;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.05rem;
+  margin-bottom: 0;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .academy-frame {
+    padding: 2.5rem 1.8rem;
+  }
+  .academy-tags {
+    gap: 1rem;
+  }
 }
 
 .gold-text {
@@ -641,6 +700,7 @@ header.scrolled .btn-nav {
   background-color: var(--color-pure-white);
 }
 
+/* Desktop grid (visible > 992px) */
 .merch-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -648,12 +708,19 @@ header.scrolled .btn-nav {
   margin-top: 4rem;
 }
 
+/* Carousel (hidden > 992px, shown on tablet/mobile) */
+.merch-carousel {
+  display: none;
+  margin-top: 4rem;
+}
+
+/* Cards shared styles */
 .merch-card {
   text-align: center;
 }
 
 .merch-img {
-  background-color: var(--color-white);
+  background-color: #f4f4f0;
   padding: 2rem;
   aspect-ratio: 1;
   display: flex;
@@ -673,7 +740,7 @@ header.scrolled .btn-nav {
 }
 
 .merch-card:hover .merch-img img {
-  transform: scale(1.08); /* Hover animation scaling */
+  transform: scale(1.08);
 }
 
 .merch-info h3 {
@@ -689,58 +756,207 @@ header.scrolled .btn-nav {
   margin-bottom: 1rem;
 }
 
+/* ---  Carousel internal layout --- */
+.merch-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.merch-carousel-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.merch-carousel .merch-card {
+  min-width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Controls row */
+.merch-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.merch-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-green-forest);
+  background: transparent;
+  color: var(--color-green-forest);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.merch-arrow:hover {
+  background: var(--color-green-forest);
+  color: var(--color-pure-white);
+}
+
+.merch-dots {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.merch-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(26, 62, 38, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.merch-dot.active {
+  background: var(--color-green-forest);
+  width: 22px;
+  border-radius: 4px;
+}
+
+/* Switch grid → carousel at 992px */
+@media (max-width: 992px) {
+  #merchDesktop { display: none; }
+  .merch-carousel { display: block; }
+}
+
 /* =========================================
    AFTERCARE SECTION
    ========================================= */
 .aftercare-section {
   padding: 8rem 0;
-  background-color: var(--color-white);
+  background-color: #f7f6f3;
 }
 
 .aftercare-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 5rem;
   align-items: center;
 }
 
+/* Image frame */
+.aftercare-img-frame {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 520px;
+}
+
+.aftercare-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s ease;
+}
+
+.aftercare-img-frame:hover img {
+  transform: scale(1.04);
+}
+
+.aftercare-img-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 62, 38, 0.35) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.aftercare-img-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  z-index: 2;
+}
+
+/* Text side */
+.aftercare-text h2 {
+  margin-bottom: 1rem;
+  color: var(--color-green-forest);
+}
+
+.aftercare-text > p {
+  color: var(--color-dark-grey);
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+}
+
+/* Steps */
 .aftercare-steps {
-  margin-top: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .aftercare-steps li {
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  color: var(--color-dark-grey);
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid rgba(26, 62, 38, 0.1);
 }
 
-.aftercare-steps li strong {
-  color: var(--color-green-forest);
+.aftercare-steps li:last-child {
+  border-bottom: none;
+}
+
+.step-num {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
-  margin-right: 10px;
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(197, 160, 89, 0.3);
+  min-width: 2.8rem;
+  padding-top: 3px;
 }
 
-/* Organic shape for the visual */
-.blob-shape {
-  width: 100%;
-  max-width: 450px;
-  height: 500px;
-  margin: 0 auto;
-  background-color: #e8eee9;
-  background-image: url("Recursos/tatoo/tatto2.jpg");
-  background-size: cover;
-  background-position: center;
-  border-radius: 50% 50% 40% 60% / 50% 40% 60% 50%;
-  animation: morph 8s ease-in-out infinite alternate;
+.aftercare-steps li > div strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--color-green-forest);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
 }
 
-@keyframes morph {
-  0% {
-    border-radius: 50% 50% 40% 60% / 50% 40% 60% 50%;
+.aftercare-steps li > div p {
+  margin: 0;
+  font-size: 0.93rem;
+  color: var(--color-dark-grey);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .aftercare-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
-  100% {
-    border-radius: 40% 60% 50% 50% / 60% 50% 40% 60%;
+  .aftercare-img-frame {
+    height: 340px;
   }
 }
 
@@ -1628,15 +1844,23 @@ header.scrolled .btn-nav {
   }
   
   .social-dock {
-    /* Slightly smaller for mobile */
-    min-width: 180px;
-    height: 54px;
-    bottom: 15px;
+    /* Fluid sizing based on viewport */
+    min-width: clamp(160px, 50vw, 220px);
+    height: clamp(46px, 6vw, 56px);
+    bottom: 14px;
+    gap: 0.9rem;
+    padding: 0 1.1rem;
+    border-radius: clamp(24px, 4vw, 32px);
   }
-  
+
   .social-dock .social-icon {
-    width: 38px;
-    height: 38px;
+    width: clamp(32px, 5vw, 40px);
+    height: clamp(32px, 5vw, 40px);
+  }
+
+  .social-dock .social-icon svg {
+    width: clamp(16px, 3vw, 20px);
+    height: clamp(16px, 3vw, 20px);
   }
 
   .gallery-grid,

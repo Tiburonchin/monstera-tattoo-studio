@@ -188,19 +188,24 @@
     <section id="cursos" class="academy parallax-section">
       <div class="academy-overlay"></div>
       <div class="container relative z-index-1">
-        <div
-          class="academy-content"
-          data-aos="zoom-in"
-          data-aos-duration="1200"
-        >
-          <span class="subtitle gold-text">ACADEMIA MONSTERA</span>
-          <h2>Aprende el arte del Fine Line</h2>
-          <p>
-            Abrimos cupos para nuestro curso intensivo. Descubre la técnica, la
-            teoría y la práctica detrás de los tatuajes minimalistas más
-            elegantes.
-          </p>
-          <a href="#" class="btn btn-gold">Descargar Temario e Inscribirse</a>
+        <div class="academy-content" data-aos="zoom-in" data-aos-duration="1200">
+          <div class="academy-frame">
+            <span class="academy-corner academy-corner--tl"></span>
+            <span class="academy-corner academy-corner--br"></span>
+            <span class="subtitle gold-text">ACADEMIA MONSTERA</span>
+            <div class="academy-divider"></div>
+            <h2>Aprende el arte del Fine Line</h2>
+            <p>
+              Abrimos cupos para nuestro curso intensivo. Descubre la técnica, la
+              teoría y la práctica detrás de los tatuajes minimalistas más elegantes.
+            </p>
+            <div class="academy-tags">
+              <span>✦ Fine Line</span>
+              <span>✦ Micro-realismo</span>
+              <span>✦ Certificación</span>
+            </div>
+            <a href="#" class="btn btn-gold">Descargar Temario e Inscribirse</a>
+          </div>
         </div>
       </div>
     </section>
@@ -214,8 +219,8 @@
           <p>Piezas exclusivas y esenciales para tu relajación diaria.</p>
         </div>
 
-        <div class="merch-grid">
-          <!-- Polo -->
+        <!-- Grid para desktop, carrusel en tablet/móvil -->
+        <div class="merch-grid" id="merchDesktop">
           <div class="merch-card" data-aos="fade-up" data-aos-delay="100">
             <div class="merch-img">
               <img src="Recursos/merch/polo_merch.png" alt="Polo Monstera" />
@@ -226,8 +231,6 @@
               <a href="#" class="btn-link">Añadir al carrito</a>
             </div>
           </div>
-
-          <!-- Polera -->
           <div class="merch-card" data-aos="fade-up" data-aos-delay="200">
             <div class="merch-img">
               <img src="Recursos/merch/polera_merch.png" alt="Polera Monstera" />
@@ -238,20 +241,58 @@
               <a href="#" class="btn-link">Añadir al carrito</a>
             </div>
           </div>
-
-          <!-- Candle -->
           <div class="merch-card" data-aos="fade-up" data-aos-delay="300">
             <div class="merch-img">
-              <img
-                src="Recursos/merch/candle_merch.png"
-                alt="Vela Relajante Monstera"
-              />
+              <img src="Recursos/merch/candle_merch.png" alt="Vela Relajante Monstera" />
             </div>
             <div class="merch-info">
               <h3>Vela 'Studio Vibe'</h3>
               <p class="price">$25.00</p>
               <a href="#" class="btn-link">Añadir al carrito</a>
             </div>
+          </div>
+        </div>
+
+        <!-- Carrusel para tablet/móvil -->
+        <div class="merch-carousel" id="merchCarousel">
+          <div class="merch-carousel-viewport">
+            <div class="merch-carousel-track" id="merchTrack">
+              <div class="merch-card">
+                <div class="merch-img">
+                  <img src="Recursos/merch/polo_merch.png" alt="Polo Monstera" />
+                </div>
+                <div class="merch-info">
+                  <h3>Polo Premium Essential</h3>
+                  <p class="price">$35.00</p>
+                  <a href="#" class="btn-link">Añadir al carrito</a>
+                </div>
+              </div>
+              <div class="merch-card">
+                <div class="merch-img">
+                  <img src="Recursos/merch/polera_merch.png" alt="Polera Monstera" />
+                </div>
+                <div class="merch-info">
+                  <h3>Polera Classic Luxury</h3>
+                  <p class="price">$55.00</p>
+                  <a href="#" class="btn-link">Añadir al carrito</a>
+                </div>
+              </div>
+              <div class="merch-card">
+                <div class="merch-img">
+                  <img src="Recursos/merch/candle_merch.png" alt="Vela Relajante Monstera" />
+                </div>
+                <div class="merch-info">
+                  <h3>Vela 'Studio Vibe'</h3>
+                  <p class="price">$25.00</p>
+                  <a href="#" class="btn-link">Añadir al carrito</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="merch-carousel-controls">
+            <button class="merch-arrow merch-prev" id="merchPrev" aria-label="Anterior">&#8592;</button>
+            <div class="merch-dots" id="merchDots"></div>
+            <button class="merch-arrow merch-next" id="merchNext" aria-label="Siguiente">&#8594;</button>
           </div>
         </div>
       </div>
@@ -261,7 +302,15 @@
     <section id="aftercare" class="aftercare-section">
       <div class="container">
         <div class="aftercare-wrapper">
-          <div class="aftercare-text" data-aos="fade-right">
+
+          <div class="aftercare-visual" data-aos="fade-up">
+            <div class="aftercare-img-frame">
+              <img src="Recursos/tatoo/tatto2.jpg" alt="Cuidado de la piel" />
+              <div class="aftercare-img-badge">Aftercare</div>
+            </div>
+          </div>
+
+          <div class="aftercare-text" data-aos="fade-up" data-aos-delay="150">
             <span class="subtitle">TU PIEL, TU LIENZO</span>
             <h2>El Arte del Cuidado</h2>
             <p>
@@ -271,33 +320,29 @@
             </p>
             <ul class="aftercare-steps">
               <li>
-                <strong>1. Limpieza Suave:</strong> Lava con jabón neutro y agua
-                tibia las primeras semanas.
+                <span class="step-num">01</span>
+                <div>
+                  <strong>Limpieza Suave</strong>
+                  <p>Lava con jabón neutro y agua tibia las primeras semanas.</p>
+                </div>
               </li>
               <li>
-                <strong>2. Hidratación:</strong> Aplica una fina capa de bálsamo
-                especializado.
+                <span class="step-num">02</span>
+                <div>
+                  <strong>Hidratación</strong>
+                  <p>Aplica una fina capa de bálsamo especializado.</p>
+                </div>
               </li>
               <li>
-                <strong>3. Protección:</strong> Evita el sol directo, piscinas y
-                mar durante 15 días.
+                <span class="step-num">03</span>
+                <div>
+                  <strong>Protección Solar</strong>
+                  <p>Evita el sol directo, piscinas y mar durante 15 días.</p>
+                </div>
               </li>
             </ul>
           </div>
-          <div class="aftercare-visual" data-aos="fade-left">
-            <div class="blob-shape">
-              <img
-                src="Recursos/tatoo/tatto2.jpg"
-                alt="Cuidado de la piel"
-                style="
-                  object-fit: cover;
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 50% 50% 40% 60% / 50% 40% 60% 50%;
-                "
-              />
-            </div>
-          </div>
+
         </div>
       </div>
     </section>

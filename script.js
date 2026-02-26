@@ -330,3 +330,52 @@ if (wizardForm) {
 }
 
 
+/* =========================================
+   MERCH CAROUSEL (tablet / mobile ≤ 992px)
+   ========================================= */
+(function initMerchCarousel() {
+  const track   = document.getElementById('merchTrack');
+  const prevBtn = document.getElementById('merchPrev');
+  const nextBtn = document.getElementById('merchNext');
+  const dotsWrap = document.getElementById('merchDots');
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const cards = track.querySelectorAll('.merch-card');
+  const total = cards.length;
+  let current = 0;
+
+  // Build dots
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'merch-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Ir a producto ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsWrap.querySelectorAll('.merch-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Touch / swipe support
+  let startX = 0;
+  track.parentElement.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+  track.parentElement.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  }, { passive: true });
+
+  // Auto-advance every 4s on mobile
+  let autoTimer = setInterval(() => goTo(current + 1), 4000);
+  track.parentElement.addEventListener('touchstart', () => clearInterval(autoTimer), { passive: true });
+})();
