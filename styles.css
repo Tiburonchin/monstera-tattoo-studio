@@ -69,6 +69,18 @@ ul {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 92%;
+  }
+}
+
 .text-center {
   text-align: center;
 }
@@ -221,7 +233,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 5%; /* Increased from 1.5rem for more top/bottom space */
+  padding: 1.5rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -232,7 +244,7 @@ header {
 header.scrolled {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  padding: 1rem 5%; /* Increased from 1rem */
+  padding: 1rem 5%;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -356,6 +368,12 @@ header.scrolled .btn-nav {
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -473,11 +491,18 @@ header.scrolled .btn-nav {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 280px;
   grid-auto-flow: dense; /* Enables masonry packing effect */
   gap: 1.5rem;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .gallery-item {
@@ -563,6 +588,12 @@ header.scrolled .btn-nav {
   background-attachment: fixed;
   text-align: center;
   color: var(--color-pure-white);
+}
+
+@media (max-width: 768px) {
+  .parallax-section {
+    background-attachment: scroll;
+  }
 }
 
 .academy-overlay {
@@ -1578,6 +1609,14 @@ header.scrolled .btn-nav {
     z-index: 2000; /* Stay above the mobile nav */
   }
 
+  header {
+    padding: 1rem 4%;
+  }
+
+  header.scrolled {
+    padding: 0.8rem 4%;
+  }
+
   /* Force hamburger to be white if menu is open, handled by JS normally but we can use body class if needed. 
      For now, we just make sure links don't disappear. */
   header.scrolled nav ul li a {
@@ -1785,5 +1824,141 @@ header.scrolled .btn-nav {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
+  }
+}
+
+/* =========================================
+   ADDITIONAL MOBILE RESPONSIVE FIXES
+   ========================================= */
+
+/* Reduce padding on all sections for mobile */
+@media (max-width: 768px) {
+  .about,
+  .parallax-section,
+  .courses,
+  .aftercare,
+  .merch {
+    padding: 5rem 0 !important;
+  }
+
+  .portfolio {
+    padding: 4rem 0 5rem !important;
+  }
+
+  .artistic-footer {
+    padding: 5rem 0 2rem !important;
+  }
+
+  /* Adjust hero content padding */
+  .hero-content {
+    padding: 0 1.5rem;
+  }
+
+  /* Better font sizes for mobile */
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 6vw, 2.8rem) !important;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* Fix section headers */
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  /* Ensure buttons stack properly */
+  .hero-buttons,
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Fix grid gaps */
+  .about-grid {
+    gap: 3rem !important;
+  }
+
+  /* Improve navigation */
+  nav ul {
+    gap: 2rem;
+  }
+
+  nav ul li a {
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices optimization */
+@media (max-width: 480px) {
+  .about,
+  .parallax-section,
+  .courses,
+  .aftercare,
+  .merch {
+    padding: 3rem 0 !important;
+  }
+
+  .portfolio {
+    padding: 3rem 0 !important;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 8vw, 2.2rem) !important;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+
+  .btn {
+    padding: 0.9rem 2rem;
+    font-size: 0.85rem;
+  }
+
+  /* Reduce hero buttons gap */
+  .hero-buttons {
+    gap: 0.8rem;
+  }
+
+  /* Logo size */
+  .logo-img {
+    height: 35px;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    bottom: 20px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Landscape mobile fix */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+  }
+
+  .scroll-indicator {
+    display: none;
   }
 }
