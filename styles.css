@@ -752,22 +752,25 @@ header.scrolled .btn-nav {
   flex-direction: row;
   min-height: 800px;
   width: 100%;
+  overflow: hidden;
 }
 
 /* Left Pane: Info */
 .booking-info-pane {
   flex: 1;
   background-color: var(--color-pure-white);
-  padding: 8rem 4rem 8rem 8rem; /* Extra padding on left for desktop */
+  padding: 8rem 4rem 8rem 8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
 }
 
 .booking-info-content {
   max-width: 450px;
-  margin-left: auto; /* Push content towards center/split line */
+  margin-left: auto;
   margin-right: 2rem;
+  width: 100%;
 }
 
 .booking-info-content h2 {
@@ -824,11 +827,12 @@ header.scrolled .btn-nav {
 /* Right Pane: Form */
 .booking-form-pane {
   flex: 1;
-  background-color: var(--color-pure-white); /* Pure white to contrast the dark card */
+  background-color: var(--color-pure-white);
   padding: 8rem 8rem 8rem 4rem;
   display: flex;
   align-items: center;
   position: relative;
+  min-width: 0;
 }
 
 .premium-form-card {
@@ -927,7 +931,7 @@ header.scrolled .btn-nav {
   background-color: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.5);
   display: flex;
-
+  align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
   font-weight: 600;
@@ -1173,49 +1177,55 @@ header.scrolled .btn-nav {
 /* Responsive Handling for 50/50 Split */
 @media (max-width: 1024px) {
   .booking-info-pane {
-    padding: 6rem 4rem;
+    padding: 6rem 3rem;
   }
   .booking-form-pane {
-    padding: 6rem 4rem;
+    padding: 6rem 3rem;
   }
 }
 
 @media (max-width: 800px) {
   .booking-split-container {
     flex-direction: column;
+    min-height: unset;
   }
-  
-  .booking-info-pane {
-    padding: 5rem 2rem;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .booking-info-content {
-    margin: 0 auto;
-  }
-  
-  .booking-contact-list {
-    align-items: center;
-  }
-  
-  .contact-item {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  
-  .booking-form-pane {
-    padding: 5rem 0; /* Remove horizontal padding so the card fills the screen width */
-  }
-  
-  .premium-form-card {
 
-    max-width: 100%; /* Ensure it can stretch */
-    border-left: none; /* If there are borders, make it flush */
+  .booking-info-pane {
+    padding: 4rem 1.5rem;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .booking-info-content {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .booking-info-content h2 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .booking-contact-list {
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .booking-form-pane {
+    padding: 0 0 4rem;
+    display: block;
+  }
+
+  .premium-form-card {
+    max-width: 100%;
+    border-left: none;
     border-right: none;
   }
-  
+
   .clean-form .form-row {
     flex-direction: column;
     gap: 0;
@@ -1223,21 +1233,50 @@ header.scrolled .btn-nav {
 }
 
 @media (max-width: 480px) {
-  .premium-form-card {
-    padding: 2rem 1.2rem; /* Even tighter padding for very small screens */
+  .booking-info-pane {
+    padding: 3rem 1.2rem;
   }
-  
+
+  .premium-form-card {
+    padding: 2rem 1.2rem;
+  }
+
   .wizard-progress {
     padding: 0 0.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .step-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
-  
+
+  .style-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
   .style-card-content {
-    padding: 1rem 0.5rem;
+    padding: 0.9rem 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  .style-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .wizard-controls {
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .file-upload-box {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .booking-info-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
 }
 
