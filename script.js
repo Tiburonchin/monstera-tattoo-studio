@@ -23,11 +23,27 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-// On mobile, replace lateral AOS animations (fade-left/fade-right) with fade-up
-// to prevent temporary horizontal scroll before elements animate in
+// On mobile: fix AOS to prevent scroll and performance issues
 if (window.innerWidth <= 768) {
+  // Replace lateral animations with fade-up (prevents horizontal scroll)
   document.querySelectorAll('[data-aos="fade-left"], [data-aos="fade-right"]').forEach(el => {
     el.setAttribute('data-aos', 'fade-up');
+  });
+
+  // Cap all AOS delays to 200ms max on mobile — long delays (up to 800ms)
+  // mean many elements transformed off-screen simultaneously, causing jank
+  document.querySelectorAll('[data-aos-delay]').forEach(el => {
+    const delay = parseInt(el.getAttribute('data-aos-delay'), 10);
+    if (delay > 200) el.setAttribute('data-aos-delay', '200');
+  });
+
+  // Disable AOS entirely on gallery items — the scale hover effect and
+  // the transformed state before animation cause the "mini-scroll" feeling
+  document.querySelectorAll('.gallery-item').forEach(el => {
+    el.removeAttribute('data-aos');
+    el.removeAttribute('data-aos-delay');
+    // Ensure item is visible immediately
+    el.classList.add('aos-animate');
   });
 }
 
